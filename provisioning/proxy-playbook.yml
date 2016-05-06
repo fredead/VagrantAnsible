@@ -1,0 +1,19 @@
+- hosts: proxy
+  gather_facts: yes
+
+  roles:
+    - core
+    - yum-epel
+    - nginx
+
+  post_tasks:
+ 
+    - name: Check Round robin
+      shell: curl http://{{ ansible_eth1.ipv4.address }} http://{{ ansible_eth1.ipv4.address }}
+      register: cmd_result
+
+    - name: Check output 
+      assert:
+        that:
+          - "'{{ hostvars[item]['ansible_hostname'] }}' in cmd_result.stdout:"
+      with_items: "{{ groups.webservers }}"

@@ -1,0 +1,7 @@
+- hosts: web*
+  gather_facts: yes
+
+  roles:
+    - core
+    - yum-epel
+    - web

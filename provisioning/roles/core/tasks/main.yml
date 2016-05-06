@@ -1,0 +1,6 @@
+---
+- name: install se linux control package
+  yum: name=libsemanage-python state=latest
+
+- name: set hostname
+  hostname: name="{{ ansible_hostname }}"

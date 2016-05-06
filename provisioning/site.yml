@@ -1,0 +1,6 @@
+
+- name: Record all
+  hosts: all
+
+- include: web-playbook.yml
+- include: proxy-playbook.yml

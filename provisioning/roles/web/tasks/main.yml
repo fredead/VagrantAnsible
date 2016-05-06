@@ -1,0 +1,15 @@
+
+
+- name: Create directory for the app
+  file: path=/opt/app state=directory mode=0755 recurse=yes
+
+- name: Install App
+  copy: src=../helloworld dest=/opt/app/helloworld owner=root group=root mode=0755
+  notify:
+    - restart app
+
+- name: Install our systemd service
+  copy: src=templates/app.service dest=/etc/systemd/system/app.service owner=root group=root mode=0755
+  notify:
+    - reload systemd
+    - restart app

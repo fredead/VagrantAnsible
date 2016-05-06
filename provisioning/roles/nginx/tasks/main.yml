@@ -1,0 +1,13 @@
+---
+- name: install nginx
+  yum: name=nginx state=latest
+
+- name: Allow network connections from nginx
+  seboolean: name=httpd_can_network_connect state=yes persistent=yes
+
+- name: nginx setup
+  template: src=nginx.j2 dest=/etc/nginx/nginx.conf owner=root group=root mode=0644
+  notify: restart nginx
+
+- name: nginx start
+  service: name=nginx state=running enabled=yes
