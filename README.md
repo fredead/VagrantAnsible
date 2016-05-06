@@ -1,4 +1,4 @@
-# Vagrant / anasible
+# Vagrant / Ansible
 This is an example of using vagrant with anisble to create 2 web servers and an nginx proxy to round robin between the 2 servers.
 ##### Software requirements
    - vagrant > 1.8.1
