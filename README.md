@@ -4,6 +4,7 @@ This is an example of using vagrant with anisble to create 2 web servers and an 
    - vagrant > 1.8.1
    - ansible > 2.0.2.0
    - go compiler
+
 # How to run
 ```
 make
